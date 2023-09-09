@@ -46,7 +46,8 @@ btn.addEventListener("click", function () {
     circleColor = "orange";
   } else {
     status = "Obese";
-    pointerPosition = 75 + ((BMI - 30) / 10) * 25;
+    // Limit the pointer position to 40 if BMI is greater than 40
+    pointerPosition = BMI > 40 ? 100 : 75 + ((BMI - 30) / 10) * 25;
     circleColor = "red";
   }
 
