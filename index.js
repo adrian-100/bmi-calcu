@@ -1,31 +1,39 @@
 // Get references to HTML elements
 const btn = document.getElementById("calculate");
 const resultDiv = document.querySelector("#result");
-const meterBar = document.getElementById("meterBar");
 const pointerIcon = document.getElementById("pointerIcon");
 const categoryDiv = document.getElementById("category");
+const heightInput = document.querySelector("#height");
+const weightInput = document.querySelector("#weight");
+const heightUnitSelect = document.getElementById("heightUnit");
+const weightUnitSelect = document.getElementById("weightUnit");
 
 // Add a click event listener to the Calculate button
 btn.addEventListener("click", function () {
   // Retrieve height and weight values from input fields
-  let height = parseFloat(document.querySelector("#height").value);
-  let weight = parseFloat(document.querySelector("#weight").value);
+  const heightValue = parseFloat(heightInput.value);
+  const weightValue = parseFloat(weightInput.value);
 
   // Check if the input values are valid
-  if (isNaN(height) || isNaN(weight) || height <= 0 || weight <= 0) {
+  if (isNaN(heightValue) || isNaN(weightValue) || heightValue <= 0 || weightValue <= 0) {
     alert("Please enter valid height and weight values!");
     return;
   }
 
+  // Convert height to centimeters if the unit is meters
+  let height = heightValue;
+  if (heightUnitSelect.value === "m") {
+    height *= 100; // Convert meters to centimeters
+  }
+
+  // Convert weight to kilograms if the unit is pounds
+  let weight = weightValue;
+  if (weightUnitSelect.value === "lb") {
+    weight *= 0.453592; // Convert pounds to kilograms
+  }
+
   // Calculate BMI and round it to two decimal places
   const BMI = (weight / ((height / 100) * (height / 100))).toFixed(2);
-
-  // Hide the result and animate its display
-  resultDiv.classList.add("hidden");
-  setTimeout(() => {
-    resultDiv.innerHTML = BMI;
-    resultDiv.classList.remove("hidden");
-  }, 500);
 
   // Determine BMI category, pointer position, and circle color
   let status = "";
@@ -47,9 +55,16 @@ btn.addEventListener("click", function () {
   } else {
     status = "Obese";
     // Limit the pointer position to 40 if BMI is greater than 40
-    pointerPosition = BMI > 40 ? 100 : 75 + ((BMI - 30) / 10) * 25;
+    pointerPosition = Math.min(100, 75 + ((BMI - 30) / 10) * 25);
     circleColor = "red";
   }
+
+  // Hide the result and animate its display
+  resultDiv.classList.add("hidden");
+  setTimeout(() => {
+    resultDiv.innerHTML = BMI;
+    resultDiv.classList.remove("hidden");
+  }, 500);
 
   // Update the text, color, and circle color dynamically
   const categoryText = categoryDiv.querySelector(".category-text");
