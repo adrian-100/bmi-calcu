@@ -13,46 +13,60 @@
   <!-- Add any other meta tags or stylesheets you need -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 <body>
 <!-- partial:index.partial.html -->
 <div class="container">
-  <div class="box">
-    <h1>BMI Calculator</h1>
-    <div class="content">
-      <div class="input">
-        <label for="height">Height</label>
-        <input type="number" id="height">
-        <select id="heightUnit">
-          <option value="cm" selected>cm</option>
-          <option value="m">m</option>
-          <option value="ft">ft</option>
-        </select>
+    <div class="box">
+      <h1>BMI Calculator</h1>
+      <div class="content">
+        <div class="input">
+          <label for="height">Height</label>
+          <input type="number" id="height">
+          <select id="heightUnit">
+            <option value="cm" selected>cm</option>
+            <option value="m">m</option>
+            <option value="ft">ft</option>
+          </select>
+        </div>
+        <div class="input">
+          <label for="weight">Weight</label>
+          <input type="number" id="weight">
+          <select id="weightUnit">
+            <option value="kg" selected>kg</option>
+            <option value="lb">lb</option>
+          </select>
+        </div>
+        <button id="calculate">Calculate BMI</button>
       </div>
-      <div class="input">
-        <label for="weight">Weight</label>
-        <input type="number" id="weight">
-        <select id="weightUnit">
-          <option value="kg" selected>kg</option>
-          <option value="lb">lb</option>
-        </select>
+      <div class="result" >
+        <p>Your BMI is</p>
+        
+        <div id="result" >00.00</div>
+        <div id="category">
+            <div class="category-circle"></div>
+            <span class="category-text"></span>
+       
+        <p class="comment"></p>
       </div>
-      <button id="calculate">Calculate BMI</button>
-    </div>
-    <div class="result">
-      <p>Your BMI is</p>
-      <div id="result">00.00</div>
-      <p class="comment"></p>
+      <div class="meter">
+        <div class="bar" id="meterBar"></div>
+        <div class="labels">
+          <div class="label">Underweight</div>
+          <div class="label">Healthy</div>
+          <div class="label">Overweight</div>
+          <div class="label">Obese</div>
+          <i id="pointerIcon" class="fas fa-caret-up pointer"></i>
+        </div>
+      
+
+      </div>
     </div>
   </div>
-</div>
+  
 
-<style>
-  select {
-    font-size:22px;
- background-image:linear-gradient(to right, #fc5c7d 0%, #6a82fb 100%);
-}
-</style>
 
   <script  src="./index.js"></script>
 
