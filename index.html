@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <p>Height CM:
+            <input type="text" name="" id="height"><br>
+            <span id="height_error"></span>
+        </p>
+
+        <p>Weight KG:
+            <input type="text" name="" id="weight"><br>
+            <span id="weight_error"></span>
+        </p>
+
+        <div>
+            <button onclick="addToInput(1)">1</button>
+            <button onclick="addToInput(2)">2</button>
+            <button onclick="addToInput(3)">3</button>
+            <button onclick="clearInput()">AC</button>
+        </div>
+
+        <div>
+            <button onclick="addToInput(4)">4</button>
+            <button onclick="addToInput(5)">5</button>
+            <button onclick="addToInput(6)">6</button>
+            <button onclick="eraseLastDigit()">&larr;</button>
+        </div>
+
+        <div>
+            <button onclick="addToInput(7)">7</button>
+            <button onclick="addToInput(8)">8</button>
+            <button onclick="addToInput(9)">9</button>
+        </div>
+
+        <div>
+            <button onclick="addToInput(0)">0</button>
+            <button id="btn">Calculate</button>
+        </div>
+
+        <p id="result"></p>
+    </div>
+</body>
+<script src="index.js"></script>
+
+</html>
